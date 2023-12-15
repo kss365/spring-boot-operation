@@ -18,11 +18,11 @@ private List<Employee> getAllEmployee()
 {
 return employeeService.getAllEmployees();
 }
-//@GetMapping("/emptax/{empid}")
-//private double gettaxEmp(@RequestBody  int tax)
-//{
-//    return employeeService.getempltax(emp, tax);
-//}
+@GetMapping("/emptax/{empid}")
+private double gettaxEmp(@RequestBody  int tax)
+{
+    return employeeService.getempltax(emp, tax);
+}
 @GetMapping("/emp/{empid}")
 private Employee getemployee(@PathVariable("bookid") int empid)
 {
