@@ -1,6 +1,8 @@
 package com.sampleproject.model;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.sun.istack.NotNull;
-import org.springframework.beans.factory.annotation.Required;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -11,42 +13,33 @@ import java.util.Date;
 
 @Entity
 @Table
-public class Employee
-{
-//Defining emp id as primary key
-@Id
-@Column
-@NotNull
-private int Empid;
-@Column
-@NotNull
-@Size(min = 2, message = "Name should have at least 2 characters")
-private String FirstName;
-@Column
-@NotNull
-private String LastName;
-@Column
-@NotNull
-private String Email;
-@Column
-@NotNull
-private int PhoneNumber;
-@Column
-@NotNull
-private Date DOJ;
-@Column
-@NotNull
-private int Salary;
-@Column
-private  double tax;
+public class Employee {
+    //Defining emp id as primary key
+    @Id
+    @Column
+    @NotNull
+    private int Empid;
+    @Column
+    @NotNull
+    //throw error if firstname is less than n2 characters
+    @Size(min = 2, message = "Name should have at least 2 characters")
+    private String FirstName;
+    @Column
+    @NotNull
+    private String LastName;
+    @Column
+    @NotNull
+    private String Email;
+    @Column
+    private long PhoneNumber;
 
-    public double getTax() {
-        return tax;
-    }
+    @Column
+    private Date DOJ;
+    @Column
+    @NotNull
+    private int Salary;
 
-    public void setTax(double tax) {
-        this.tax = tax;
-    }
+
 
     public int getEmpid() {
         return Empid;
@@ -55,17 +48,20 @@ private  double tax;
     public void setEmpid(int empid) {
         Empid = empid;
     }
+
     public void setFirstName(String firstName) {
         FirstName = firstName;
     }
+
     public void setLastName(String lastName) {
         LastName = lastName;
     }
+
     public void setEmail(String email) {
         Email = email;
     }
 
-    public void setPhoneNumber(int phoneNumber) {
+    public void setPhoneNumber(long phoneNumber) {
         PhoneNumber = phoneNumber;
     }
 
@@ -89,7 +85,7 @@ private  double tax;
         return Email;
     }
 
-    public int getPhoneNumber() {
+    public long getPhoneNumber() {
         return PhoneNumber;
     }
 
@@ -100,7 +96,6 @@ private  double tax;
     public int getSalary() {
         return Salary;
     }
-
 
 
 }
